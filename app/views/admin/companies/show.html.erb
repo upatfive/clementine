@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				Company
+			</div>
+			<div class="box-body">
+  			Name: <%= @company.name %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<%= link_to 'Edit', edit_admin_company_path(@company) , class: 'btn btn-flat btn-primary' %> |
+<%= link_to 'Back', admin_companies_path, class: 'btn btn-flat btn-primary' %>

@@ -1,0 +1,82 @@
+<%= form_for [:admin, project] do |f| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :project_contact %>
+    <%= f.text_field :project_contact, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :project_email %>
+    <%= f.text_field :project_email, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :app_type %>
+    <%= f.text_field :app_type, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :design_needed %>
+    <%= f.check_box :design_needed %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :inspiration %>
+    <%= f.text_area :inspiration, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :start_date %>
+    <%= f.date_select :start_date, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :end_date %>
+    <%= f.date_select :end_date, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :budget_range %>
+    <%= f.text_field :budget_range, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :about_the_project %>
+    <%= f.text_area :about_the_project, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :potential_new %>
+    <%= f.check_box :potential_new %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :paid %>
+    <%= f.check_box :paid %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-flat btn-primary'%>
+  </div>
+<% end %>

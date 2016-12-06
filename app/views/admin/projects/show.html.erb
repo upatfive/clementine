@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Project contact:</strong>
+  <%= @project.project_contact %>
+</p>
+
+<p>
+  <strong>Project email:</strong>
+  <%= @project.project_email %>
+</p>
+
+<p>
+  <strong>App type:</strong>
+  <%= @project.app_type %>
+</p>
+
+<p>
+  <strong>Design needed:</strong>
+  <%= @project.design_needed %>
+</p>
+
+<p>
+  <strong>Inspiration:</strong>
+  <%= @project.inspiration %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @project.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @project.end_date %>
+</p>
+
+<p>
+  <strong>Budget range:</strong>
+  <%= @project.budget_range %>
+</p>
+
+<p>
+  <strong>About the project:</strong>
+  <%= @project.about_the_project %>
+</p>
+
+<p>
+  <strong>Potential new:</strong>
+  <%= @project.potential_new %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @project.paid %>
+</p>
+
+<%= link_to 'Edit', edit_admin_project_path(@project) %> |
+<%= link_to 'Back', admin_projects_path %>

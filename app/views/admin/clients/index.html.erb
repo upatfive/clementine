@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center title">Clients</h1>
+
+<%= link_to 'New Client', new_admin_client_path, class: 'btn btn-flat btn-primary pull-right' %>
+<br><br>
+
+<div class="row">
+  <% @clients.each do |client| %>
+    <div class="col-md-4">
+      <%= link_to admin_client_path(client) do %>
+        <%= render 'client_card', client: client %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+<br>
+
+
