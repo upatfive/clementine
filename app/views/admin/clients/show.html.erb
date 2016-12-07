@@ -1,6 +1,18 @@
-<div class="col-md-12">
-	<%= link_to edit_admin_client_path(@client) do %>
-		<%= render 'client_card', client: @client %>
+<div class="row">
+	<div class="col-md-12">
+		<%= link_to edit_admin_client_path(@client) do %>
+			<%= render 'client_card', client: @client %>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<% @projects.each do |project| %>
+	<div class="col-md-6">
+		<%= link_to admin_project_path(project) do %>
+		<%= render 'admin/projects/project_card', project: project %>
+		<% end %>
+	</div>
 	<% end %>
 </div>
 
