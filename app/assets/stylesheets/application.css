@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+.box-potential_new {
+	border-top-color: #008d4c;
+}
+
+.box-signed {
+	border-top-color: #00a7d0;
+}
+
+.box-in_progress {
+	border-top-color: #357ca5;
+}
+
+.box-complete {
+	border-top-color: #ff7701;
+}
+
+hr {
+	border: solid 1px black;
+}
+
+.danger {
+	color: #d33724;
+}

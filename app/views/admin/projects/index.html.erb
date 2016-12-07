@@ -3,7 +3,7 @@
 <div class="row">
   <% @projects.each do |project| %>
     <div class="col-md-6">
-      <%= link_to admin_project_path(project) do %>
+      <%= link_to edit_admin_project_path(project) do %>
         <%= render 'project_card', project: project %>
       <% end %>
     </div>

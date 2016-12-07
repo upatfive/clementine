@@ -10,6 +10,7 @@ class Admin::ProjectsController < AdminController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @project_phases = @project.project_phases
   end
 
   # GET /projects/new
@@ -42,6 +43,12 @@ class Admin::ProjectsController < AdminController
   def update
     respond_to do |format|
       if @project.update(project_params)
+        if @project.platform_previously_changed?
+          project_type = "Project::PROJECT_PHASES_#{@project.platform.upcase}"
+          project_type.constantize.each do |phase|
+            raise "hell"
+          end
+        end
         format.html { redirect_to admin_project_path(@project), notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
@@ -69,6 +76,6 @@ class Admin::ProjectsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :description, :project_contact, :project_email, :app_type, :design_needed, :inspiration, :start_date, :end_date, :budget_range, :about_the_project, :potential_new, :paid, :client_id)
+      params.require(:project).permit(:name, :description, :project_contact, :project_email, :app_type, :design_needed, :inspiration, :start_date, :end_date, :budget_range, :about_the_project, :potential_new, :paid, :client_id, :status, :platform, project_phases_attributes:[:id, :title, :description, :_destroy])
     end
 end

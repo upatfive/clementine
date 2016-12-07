@@ -11,29 +11,58 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
+  <div class="row">
+    <div class="field col-md-3 form-group">
+      <%= f.label :client %>
+      <%= f.collection_select :client_id, Client.order(:name), :id, :name, {include_blank: 'select a client...'}, {class: 'form-control'} %>
+    </div>
+    <div class="field col-md-3 form-group">
+      <%= f.label :status %>
+      <%= f.collection_select :status, Project::STATUS, :to_s, :humanize, {include_blank: 'current status...'}, {class: 'form-control'} %>
+    </div> 
+    <div class="field col-md-3 form-group">
+      <%= f.label :budget_range %>
+      <%= f.collection_select :budget_range, Project::BUDGET_RANGE, :to_s, :humanize, {include_blank: 'budget range...'}, {class: 'form-control'} %>
+    </div>
+    <div class="field col-md-3 form-group">
+      <%= f.label :platform %>
+      <%= f.collection_select :platform, Project::PLATFORM, :to_s, :humanize, {include_blank: "pick a platform..."}, {class: 'form-control'}%>
+    </div>  
   </div>
 
-  <div class="field form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
+  <div class="row">
+    <div class="field col-md-4 form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="field col-md-8 form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, rows: "6", class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :project_contact %>
-    <%= f.text_field :project_contact, class: "form-control" %>
+  <div class="row">
+    <div class="field col-md-6 form-group">
+      <%= f.label :project_contact %>
+      <%= f.text_field :project_contact, class: "form-control" %>
+    </div>
+
+    <div class="field col-md-6 form-group">
+      <%= f.label :project_email %>
+      <%= f.text_field :project_email, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :project_email %>
-    <%= f.text_field :project_email, class: "form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :app_type %>
-    <%= f.text_field :app_type, class: "form-control" %>
+  <div class="row">
+    <div class="field col-md-4 form-group">
+      <%= f.label :app_type %>
+      <%= f.collection_select :app_type, Project::APP_TYPE, :to_s, :humanize, {:include_blank => 'select an app type...'}, {:class => 'form-control'} %>
+    </div>
+    <div class="field col-md-8 form-group">
+      <%= f.label :inspiration %>
+      <%= f.text_area :inspiration, rows: "6", class: "form-control" %>
+    </div>
   </div>
 
   <div class="field form-group">
@@ -41,25 +70,19 @@
     <%= f.check_box :design_needed %>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :inspiration %>
-    <%= f.text_area :inspiration, class: "form-control" %>
+  <div class="row">
+    <div class="field col-md-6 form-group">
+      <%= f.label :start_date %>
+      <%= f.date_select :start_date, class: "form-control" %>
+    </div>
+
+    <div class="field col-md-6 form-group">
+      <%= f.label :end_date %>
+      <%= f.date_select :end_date, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :start_date %>
-    <%= f.date_select :start_date, class: "form-control" %>
-  </div>
 
-  <div class="field form-group">
-    <%= f.label :end_date %>
-    <%= f.date_select :end_date, class: "form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :budget_range %>
-    <%= f.text_field :budget_range, class: "form-control" %>
-  </div>
 
   <div class="field form-group">
     <%= f.label :about_the_project %>
@@ -67,16 +90,33 @@
   </div>
 
   <div class="field form-group">
-    <%= f.label :potential_new %>
-    <%= f.check_box :potential_new %>
-  </div>
-
-  <div class="field form-group">
     <%= f.label :paid %>
     <%= f.check_box :paid %>
   </div>
+
+  <hr>
+  <h2>Phases</h2>
+  <%= f.fields_for :project_phases do |builder| %>
+    <%= render 'project_phase_fields', f: builder %>
+  <% end %>
+  <div class="field form-group">
+    <%= link_to_add_fields "Add Phase", f, :project_phases %>
+  </div>
+
+  <hr>
 
   <div class="actions">
     <%= f.submit class: 'btn btn-flat btn-primary'%>
   </div>
 <% end %>
+
+<script>
+  $('form').on('click', '.add_fields', function(e){
+    e.preventDefault();
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    console.log($(this))
+
+    $(this).before($(this).data('fields').replace(regexp, time));
+  });
+</script>
