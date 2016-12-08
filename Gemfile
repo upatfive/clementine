@@ -13,6 +13,9 @@ gem 'bullet'
 # adding tags
 gem 'acts-as-taggable-on', '~> 4.0'
 
+#drag and droppable lists
+gem 'ranked-model'
+gem 'jquery-ui-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

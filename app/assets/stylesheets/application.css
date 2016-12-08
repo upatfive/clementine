@@ -37,3 +37,7 @@ hr {
 .danger {
 	color: #d33724;
 }
+
+.phase {
+	cursor: move;
+}

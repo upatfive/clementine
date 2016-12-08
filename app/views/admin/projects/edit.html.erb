@@ -1,6 +1,29 @@
-<h1>Editing <%= @project.name %></h1>
+<h1 class="text-center">Editing <%= @project.name %></h1>
 
 <%= render 'form', project: @project %>
 
-<%= link_to 'Show', admin_project_path(@project) %> |
-<%= link_to 'Back', admin_projects_path %>
+<%= link_to 'Preview Proposal', admin_project_path(@project), class: 'btn btn-flat btn-success' %>
+
+<script>
+	$('#sortable').sortable();
+
+	$('#sortable').sortable({
+		axis: 'y',
+		items: '.phase',
+		cursor: 'move',
+		stop: function(e, ui){
+			ui.item.children('.phase').effect('highlight', {}, 1000)
+			},
+			update: function(e, ui){
+				item_id = ui.item.data('phase_id')
+				row_order = ui.item.index('.phase')
+				console.log($(this).data('update_url'))
+				$.ajax({
+					type: 'POST',
+					url: $(this).data('update_url'),
+					dataType: 'json',
+					data: {id: item_id, project_phase: { phase_order_position: row_order}}	
+					})
+			}
+		})
+</script>

@@ -10,7 +10,7 @@ class Admin::ProjectsController < AdminController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @project_phases = @project.project_phases
+    @project_phases = @project.project_phases.rank(:phase_order)
   end
 
   # GET /projects/new
@@ -43,7 +43,7 @@ class Admin::ProjectsController < AdminController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        if @project.platform_previously_changed?
+        if @project.platform_previously_changed? && @project.platform.present?
           project_type = "Project::PROJECT_PHASES_#{@project.platform.upcase}"
           project_type.constantize.each do |phase|
             @project.project_phases.create(title: phase[0], description: phase[1])

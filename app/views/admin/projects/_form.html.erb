@@ -11,10 +11,32 @@
     </div>
   <% end %>
 
+  <div class="actions">
+    <%= f.submit class: 'btn btn-flat btn-primary pull-right'%>
+  </div>
+
+  <div class="container">
+    
+  </div>
   <div class="row">
-    <div class="field col-md-3 form-group">
+    <div class="field col-md-4 form-group">
       <%= f.label :client %>
       <%= f.collection_select :client_id, Client.order(:name), :id, :name, {include_blank: 'select a client...'}, {class: 'form-control'} %>
+    </div>
+    <div class="field col-md-4 form-group">
+      <%= f.label :project_contact %>
+      <%= f.text_field :project_contact, class: "form-control" %>
+    </div>
+
+    <div class="field col-md-4 form-group">
+      <%= f.label :project_email %>
+      <%= f.text_field :project_email, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field col-md-3 form-group">
+      <%= f.label :app_type %>
+      <%= f.collection_select :app_type, Project::APP_TYPE, :to_s, :humanize, {:include_blank => 'select an app type...'}, {:class => 'form-control'} %>
     </div>
     <div class="field col-md-3 form-group">
       <%= f.label :status %>
@@ -43,18 +65,6 @@
   </div>
 
   <div class="row">
-    <div class="field col-md-6 form-group">
-      <%= f.label :project_contact %>
-      <%= f.text_field :project_contact, class: "form-control" %>
-    </div>
-
-    <div class="field col-md-6 form-group">
-      <%= f.label :project_email %>
-      <%= f.text_field :project_email, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="row">
     <div class="field col-md-4 form-group">
       <%= f.label :app_type %>
       <%= f.collection_select :app_type, Project::APP_TYPE, :to_s, :humanize, {:include_blank => 'select an app type...'}, {:class => 'form-control'} %>
@@ -71,12 +81,12 @@
   </div>
 
   <div class="row">
-    <div class="field col-md-6 form-group">
+    <div class="field col-md-4 form-group">
       <%= f.label :start_date %>
       <%= f.date_select :start_date, class: "form-control" %>
     </div>
 
-    <div class="field col-md-6 form-group">
+    <div class="field col-md-4 form-group">
       <%= f.label :end_date %>
       <%= f.date_select :end_date, class: "form-control" %>
     </div>
@@ -95,18 +105,22 @@
   </div>
 
   <hr>
-  <h2>Phases</h2>
-  <%= f.fields_for :project_phases do |builder| %>
-    <%= render 'project_phase_fields', f: builder %>
-  <% end %>
+  <h2 class="text-center">Phases</h2>
+  <hr>
+  <div class="phases" id="sortable" data-update_url="<%= sort_admin_project_phases_path %>">
+    <%= f.fields_for :project_phases, f.object.project_phases.rank(:phase_order) do |builder| %>
+      <%= render 'project_phase_fields', f: builder %>
+    <% end %>
+  </div>
   <div class="field form-group">
     <%= link_to_add_fields "Add Phase", f, :project_phases %>
   </div>
 
   <hr>
+  
 
   <div class="actions">
-    <%= f.submit class: 'btn btn-flat btn-primary'%>
+    <%= f.submit class: 'btn btn-flat btn-primary pull-right'%>
   </div>
 <% end %>
 
