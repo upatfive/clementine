@@ -1,6 +1,6 @@
 class Admin::ClientsController < AdminController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token
   # GET /clients
   # GET /clients.json
   def index
@@ -20,6 +20,10 @@ class Admin::ClientsController < AdminController
 
   # GET /clients/1/edit
   def edit
+  end
+
+  def create_from_form
+    
   end
 
   # POST /clients

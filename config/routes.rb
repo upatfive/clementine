@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+	get 'new_project', to: 'pages#new_project'
 	namespace :admin do 
   	resources :companies
   	resources :clients

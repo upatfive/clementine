@@ -1,0 +1,139 @@
+
+// html
+// 	:font-size 10px
+// 	:box-sizing border-box
+// *, *:before, *:after
+// 	:box-sizing inherit	
+// body
+// 	:font-family 'PT Mono', monospace
+// 	:font-size 1.5rem
+// 	:line-height 2.6rem
+// 	:margin 0
+
+// $header-font: 'Avenir', 'Helvetica', sans-serif
+// $sea-green: #6A7564
+// $sea-green-light: #7C8975
+// $blue: #CDD9E7
+// $black: #242424
+// $light-grey: #F9F9F9
+// $mid-grey: #e0e2e4
+// $dark-grey: #7E7E7E
+// $green: #78D18B
+// .public_pages
+// 	img 
+// 		:width 100%
+// 	//grid columns
+
+
+// 	// $body-font:'PT Mono', monospace
+// 	.attn 
+// 		:font-weight 300
+// 		:color $green
+
+// 	$grid-base: 40
+
+// 	=make-column($columns, $grid: $grid-base)
+// 		:box-sizing border-box
+// 		:width percentage($columns / $grid)
+
+// 	=make-gutter($left-gutter: 0, $right-gutter: 0, $grid: $grid-base)
+// 		:margin-left percentage($left-gutter / $grid)
+// 		:margin-right percentage($right-gutter / $grid)
+
+// 	//adaptive screen sizes
+// 	%make-adaptive
+// 		@media screen and (min-width: 1170px)
+// 			// XL
+// 			:width 1146px
+// 			:margin
+// 				:left 12px
+// 				:right 12px
+// 		@media screen and (min-width: 960px) and (max-width: 1169px)
+// 			// LG
+// 			:width 936px
+// 			:margin
+// 				:left 12px
+// 				:right 12px
+// 		@media screen and (min-width: 768px) and (max-width: 959px)
+// 			// MD
+// 			:width 744px
+// 			:margin
+// 				:left 12px
+// 				:right 12px
+// 		@media screen and (min-width: 500px) and (max-width: 767px)
+// 			// SM
+// 			:width 480px
+// 			:margin
+// 				:left 12px
+// 				:right 12px
+// 		@media screen and (max-width: 499px)
+// 			// XS
+// 			:width auto
+// 			:margin-left 8px
+// 			:margin-right 8px
+
+
+// 	=display-for($size: false)
+// 		@each $screen in $size
+// 			@if $screen == xl
+// 				@media screen and (min-width: 1170px)
+// 					@content
+// 			@else if $screen == lg
+// 				@media screen and (min-width: 960px) and (max-width: 1169px)
+// 					@content
+// 			@if $screen == md
+// 				@media screen and (min-width: 768px) and (max-width: 959px)
+// 					@content
+// 			@else if $screen == sm
+// 				@media screen and (min-width: 500px) and (max-width: 767px)
+// 					@content
+// 			@else if $screen == xs
+// 				@media screen and (max-width: 499px)
+// 					@content
+					
+// 		=container 
+// 			// +make-adaptive
+// 			:box-sizing border-box
+// 			:position relative
+// 			:width 90%
+// 			:max-width 1200px
+// 			:margin 0 auto
+// 			+display-for(xl lg md)
+// 				:margin 0 auto
+// 			+display-for(xs sm)
+// 				:margin 0
+// 				:padding 0 12px	
+// 		.group, .container
+// 			+container	
+// 		.flex-container 
+// 			:display flex
+// 			:flex-wrap wrap
+// 			:justify-content space-between
+// 			:padding 60px 0	
+
+// 		.col
+// 			&--half
+// 				+make-column(5)
+// 				+make-gutter(0,1)
+// 				&:last-of-type
+// 					+make-gutter(1,0)
+// 				+display-for(sm xs)
+// 					+make-column(12)
+// 					+make-gutter(0, 0)
+// 					&:last-of-type
+// 						+make-gutter(0,0)
+// 			&--half-left
+// 				+make-column(5)
+// 				+make-gutter(1,0)
+// 				&:last-of-type
+// 					+make-gutter(0,1)
+// 				+display-for(sm xs)
+// 					+make-column(12)
+// 					+make-gutter(0, 0)
+// 					&:last-of-type
+// 						+make-gutter(0,0)				
+// 			&--half-small
+// 				+make-column(5.75)
+// 				+make-gutter(0, 0.25)
+// 				&:last-of-type
+// 					+make-gutter(0.25, 0)

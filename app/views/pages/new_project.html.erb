@@ -1,0 +1,225 @@
+<div class="public_pages">
+	
+	<div class="new_project">
+		<header>
+			<div class="container">
+				<h2>Starting a new Project</h2>
+				<p class="attn">A better idea of what you are looking to build.</p>
+			</div>
+			</header>
+			<!-- <h1>Hi!</h1>
+			<h2>The goal of this form is to get a better idea of what you are looking to build.</h2> -->
+			<div class="flex-container">	
+				<form action="" id="add_client" data-update_url="<%= admin_clients_path %>">	
+					<section>
+						<div class="container">
+							<h2>What are you looking to create?</h2>
+							<p>We'll get into the details later, but for now give us a broad idea of what kind of website or application you are looking for.</p>
+						</div>
+						<div class="flex-container container">
+							<div class="radio-block">
+								<input type="radio" name="service_type" value="existing" id="existing" >
+								<div class="radio-content">
+									<i class="fa fa-window-maximize" aria-hidden="true"></i>
+									<h3>Work on an Existing Site or Application</h3>
+									<p>You have a website or application already and are looking to add features, functionality, or maybe build out a new section.</p>
+								</div>
+								<label for="existing"></label>
+							</div>
+							<div class="radio-block">
+								<input type="radio" name="service_type" value="static_site" id="static_site" >
+								<div class="radio-content">			
+									<i class="fa fa-desktop" aria-hidden="true"></i>
+									<h3>Static Website</h3>
+									<p>You have an idea of what information you want your site to display and think this will stay consitent for the foreseable future. Some great use cases for static websites could include a restaurant with a consistent menu, a microsite for an event, a site for a brick and mortar shop. This is a great place to start if you are looking to establish an online presence.</p>
+								</div>
+								<label for="static_site"></label>
+							</div>
+							<div class="radio-block">
+								<input type="radio" name="service_type" value="dynamic_site" id="dynamic_site" >
+								<div class="radio-content">	
+									<i class="fa fa-file-code-o" aria-hidden="true"></i>
+									<h3>Dynamic Website</h3>
+									<p>Your site has some consistently updated components. Maybe you have a blog or event listings. Maybe you are updating the images and copy and want you or someone on your team to input, change, and rework content. If this resonates than a dynamic site, powered by a content management system, could be right for you.</p>
+								</div>
+								<label for="dynamic_site"></label>
+							</div>
+							<div class="radio-block">
+								
+								<input type="radio" name="service_type" value="ecomm_site" id="ecomm_site" >
+								<div class="radio-content">	
+									<i class="fa fa-tag" aria-hidden="true"></i>
+									<h3>Ecommerce Website</h3>
+									<p>The primary goal of your site is to act as an ecommerce gateway. You want to be able to manage new products and inventory from a content management system. You may still want other features, like a blog or articles section or a customizable lookbook and you can have those too. </p>
+								</div>
+								<label for="ecomm_site"></label>
+							</div>
+							<div class="radio-block">
+								<input type="radio" name="service_type" value="market" id="market" >
+								<div class="radio-content">
+									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+									<h3>Market Place</h3>
+									<p>Marketplace applications facilitate peer to peer commerce. This is a custom solution that is heavily transactionally driven. Some exmaples include Etsy and Airbnb</p>
+								</div>
+								<label for="market"></label>
+							</div>
+							<div class="radio-block">
+								<input type="radio" name="service_type" value="web_app" id="web_app" >
+								<div class="radio-content">
+									<i class="fa fa-id-card-o" aria-hidden="true"></i>
+									<h3>Custom Web Application</h3>
+									<p>Your application involves custom user interactions. Maybe you have a new applicaiton idea or are looking to transform a low tech solution into something more automated. A custom web applicaitons allows you to decide the features and functionalities you want for your project. Some great examples of web applications are WealthSimple, Twitter, Meetup.</p>
+								</div>
+								<label for="web_app"></label>
+							</div>
+						</div>
+					</section>
+					<section class="design">
+						<div class="container">
+							<h2>What about design?</h2>
+							<p>Do you have some existing branding, a fully distilled design, or are you looking to start fresh?</p>
+						</div>
+						<div class="container flex-container">
+							<div class="radio-block">
+								<input type="radio" name="design_req" id="existing_brand_design" value="existing_brand_design">
+								<div class="radio-content">
+									<i class="fa fa-laptop" aria-hidden="true"></i>
+									<h3>You have existing branding and design</h3>
+									<p>A flat design has been done for your project already or you are working with an existing project that is already designed. All graphic design elements are accounted for.</p>
+								</div>
+								<label for="existing_brand_design"></label>
+							</div>
+							<div class="radio-block">
+								<input type="radio" name="design_req" id="existing_brand_no_design" value="existing_brand_no_design">
+								<div class="radio-content">
+									<i class="fa fa-compass" aria-hidden="true"></i>
+									<h3>You have existing branding but need design</h3>
+									<p>You have a logo, brand colors, and maybe some fonts associated with your company or project. You are looking to get the design for the website or application done, leveraging existing branding.</p>
+								</div>				
+								<label for="existing_brand_no_design"></label>
+							</div>
+							<div class="radio-block">
+								<input type="radio" name="design_req" id="brand_and_design" value="brand_and_design">
+								<div class="radio-content">
+									<i class="fa fa-paint-brush" aria-hidden="true"></i>
+									<h3>You need branding and design</h3>
+									<p>You are starting fresh or just starting and need a logo, colors, font-treatments and the overall look of your site or application to be developed.</p>
+								</div>
+								<label for="brand_and_design"></label>
+							</div>
+						</div>
+					</section>
+
+					<section class="inspiration">
+						<div class="container">
+							<h3>What are some websites or applications you like the look and feel of (provide links)</h3>
+							<textarea name="site_inspo" id="site_inspo" cols="30" rows="10"></textarea>
+						</div>
+					</section>
+
+					<section class="details">
+						<div class="container flex-container">
+							<label for="start_date">When are you looking to start?</label>
+							<input type="date" name="start_date" id="start_date">
+
+							<label for="end_date">What is your ideal completion date?</label>
+							<input type="date" name="end_date" id="end_date">
+						</div>
+						<div class="container"><h3>What is your budget?</h3></div>
+						<div class="container flex-container budget">
+							<div class="radio-block">
+								<input type="radio" name="budget" value="budget_1" id="budget_1">
+								<div class="radio-content">
+									<h3>$2,000 - $5,000</h3>
+								</div>
+								<label for="budget_1"></label>
+							</div>
+							<div class="radio-block">
+								<input type="radio" name="budget" value="budget_2" id="budget_2">
+								<div class="radio-content">
+									<h3>$5,000 - $10,000</h3>
+								</div>
+								<label for="budget_2"></label>
+							</div>
+							<div class="radio-block">
+								<input type="radio" name="budget" value="budget_3" id="budget_3">
+								<div class="radio-content">
+									<h3>$10,000 - $20,000</h3>
+								</div>
+								<label for="budget_3"></label>
+							</div>
+							<div class="radio-block">
+								<input type="radio" name="budget" value="budget_4" id="budget_4">
+								<div class="radio-content">
+									<h3>$20,000+</h3>
+								</div>
+								<label for="budget_4"></label>
+							</div>
+						</div>
+					</section>
+
+					<section class="project-descrition">
+						<div class="container">	
+							<h3>Tell us a bit about your project. Who is it for? What will it do?</h3>
+							<textarea name="project_desc" id="project_desc" cols="30" rows="10"></textarea>
+						</div>
+					</section>
+
+					<section class="contact_info">
+						<div class="container">
+							<label for="name">Your name</label>
+							<input type="text" id="name" name="name">
+							<label for="email">Email</label>
+							<input type="email" id="email" name="email">
+						</div>
+					</section>
+
+					<input type="submit" value="get in touch">
+				</form>
+				<div class="overview">
+					<p>Looking to create a __________</p>
+				</div>
+		<div>	
+	</div>
+</div>
+	
+	<script src="https://use.fontawesome.com/e936e9fdb6.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+	<script>
+		const app = {};
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyDo2Dno81DhP8wY56xXewSt2d07ryNMZfk",
+	    authDomain: "new-client-f2ff2.firebaseapp.com",
+	    databaseURL: "https://new-client-f2ff2.firebaseio.com",
+	    storageBucket: "new-client-f2ff2.appspot.com",
+	    messagingSenderId: "307889487273"
+	  };
+	  firebase.initializeApp(config);
+
+	  //ref to databse
+	  const database = firebase.database();
+
+	  app.addClient = (client) => {
+	  	let clientId = Math.round(Math.random()* 10000) 
+	  	firebase.database().ref(`clients/${clientId}`).set({
+	  		client
+	  	})
+	  }
+
+	  $(() => {
+	  	$('#add_client').on('submit', (e) => {
+	  		e.preventDefault()
+	  		console.log('clicked')
+	  		$.ajax({
+					type: 'POST',
+					url: $('#add_client').data('update_url'),
+					dataType: 'json',
+					data: $(this).serialize()	
+					})
+	  		
+	  	})
+	  })
+
+	</script>
