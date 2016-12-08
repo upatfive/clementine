@@ -46,7 +46,7 @@ class Admin::ProjectsController < AdminController
         if @project.platform_previously_changed?
           project_type = "Project::PROJECT_PHASES_#{@project.platform.upcase}"
           project_type.constantize.each do |phase|
-            raise "hell"
+            @project.project_phases.create(title: phase[0], description: phase[1])
           end
         end
         format.html { redirect_to admin_project_path(@project), notice: 'Project was successfully updated.' }
