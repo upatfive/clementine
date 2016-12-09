@@ -23,7 +23,8 @@ class Admin::ClientsController < AdminController
   end
 
   def create_from_form
-    
+    puts params
+    # byebug
   end
 
   # POST /clients
