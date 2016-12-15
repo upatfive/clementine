@@ -17,6 +17,10 @@
 @import 'base';
 @import 'styles';
 
+body {
+	font-family:'PT Mono';
+}
+
 .box-potential_new {
 	border-top-color: #008d4c;
 }

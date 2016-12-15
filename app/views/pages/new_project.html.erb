@@ -9,8 +9,21 @@
 			</header>
 			<!-- <h1>Hi!</h1>
 			<h2>The goal of this form is to get a better idea of what you are looking to build.</h2> -->
-			<div class="flex-container">	
-				<form action="" id="add_client" data-update_url="<%= create_from_form_admin_clients_path %>">	
+			<div class="flex-container">
+				<%= form_for [:admin, @project] do |f| %>
+				<p><%= f.object %></p>
+					<% if @project.errors.any? %>
+						<div id="error_explanation">
+							<h2><%= pluralize(@project.errors.count, 'error') %> prohibited this form from being saved: </h2>
+							<ul>
+								<% @project.errors.full_messages.each do |message| %>
+									<li><%= message %></li>
+								<% end %>
+							</ul>
+						</div>
+					<% end %>
+						
+				<!-- <form action="" action="<%= create_from_form_admin_clients_path %>" id="add_client" data-update_url="<%= create_from_form_admin_clients_path %>">	 -->
 					<section>
 						<div class="container">
 							<h2>What are you looking to create?</h2>
@@ -18,6 +31,7 @@
 						</div>
 						<div class="flex-container container">
 							<div class="radio-block">
+								<%= radio_button("post", "category", "rails") %>
 								<input type="radio" name="service_type" value="existing" id="existing" >
 								<div class="radio-content">
 									<i class="fa fa-window-maximize" aria-hidden="true"></i>
@@ -81,31 +95,34 @@
 						</div>
 						<div class="container flex-container">
 							<div class="radio-block">
-								<input type="radio" name="design_req" id="existing_brand_design" value="existing_brand_design">
+								<%= f.radio_button :design_needed, 'existing_brand_design'%>
 								<div class="radio-content">
 									<i class="fa fa-laptop" aria-hidden="true"></i>
 									<h3>You have existing branding and design</h3>
 									<p>A flat design has been done for your project already or you are working with an existing project that is already designed. All graphic design elements are accounted for.</p>
 								</div>
-								<label for="existing_brand_design"></label>
+								<%= f.label :design_needed_existing_brand_design, 'existing_brand_design' do %>
+								<% end %>
 							</div>
 							<div class="radio-block">
-								<input type="radio" name="design_req" id="existing_brand_no_design" value="existing_brand_no_design">
+								<%= f.radio_button :design_needed, 'existing_brand_no_design'%>
 								<div class="radio-content">
 									<i class="fa fa-compass" aria-hidden="true"></i>
 									<h3>You have existing branding but need design</h3>
 									<p>You have a logo, brand colors, and maybe some fonts associated with your company or project. You are looking to get the design for the website or application done, leveraging existing branding.</p>
 								</div>				
-								<label for="existing_brand_no_design"></label>
+								<%= f.label :design_needed_existing_brand_no_design, 'existing_brand_no_design' do %>
+								<% end %>
 							</div>
 							<div class="radio-block">
-								<input type="radio" name="design_req" id="brand_and_design" value="brand_and_design">
+								<%= f.radio_button :design_needed, 'brand_and_design'%>
 								<div class="radio-content">
 									<i class="fa fa-paint-brush" aria-hidden="true"></i>
 									<h3>You need branding and design</h3>
 									<p>You are starting fresh or just starting and need a logo, colors, font-treatments and the overall look of your site or application to be developed.</p>
 								</div>
-								<label for="brand_and_design"></label>
+								<%= f.label :design_needed_brand_and_design, 'brand_and_design' do %>
+								<% end %>
 							</div>
 						</div>
 					</section>
@@ -113,47 +130,55 @@
 					<section class="inspiration">
 						<div class="container">
 							<h3>What are some websites or applications you like the look and feel of (provide links)</h3>
-							<textarea name="site_inspo" id="site_inspo" cols="30" rows="10"></textarea>
+							<%= f.label :inspiration %>
+							<%= f.text_area :inspiration, rows: "6", class: "form-control" %>
 						</div>
 					</section>
 
 					<section class="details">
 						<div class="container flex-container">
-							<label for="start_date">When are you looking to start?</label>
-							<input type="date" name="start_date" id="start_date">
+							<%= f.label "When are you looking to start?" %>
+							<%= f.date_field :start_date %>
 
-							<label for="end_date">What is your ideal completion date?</label>
-							<input type="date" name="end_date" id="end_date">
+							<%= f.label "What is your ideal completion date?" %>
+							<%= f.date_field :end_date %>
 						</div>
 						<div class="container"><h3>What is your budget?</h3></div>
 						<div class="container flex-container budget">
 							<div class="radio-block">
-								<input type="radio" name="budget" value="budget_1" id="budget_1">
+								<%= f.radio_button :budget_range, 'budget_1'%>
 								<div class="radio-content">
 									<h3>$2,000 - $5,000</h3>
 								</div>
-								<label for="budget_1"></label>
+								<%= f.label :budget_range_budget_1, 'budget_1' do %>
+								<% end %>
 							</div>
+
 							<div class="radio-block">
-								<input type="radio" name="budget" value="budget_2" id="budget_2">
+								<%= f.radio_button :budget_range, 'budget_2'%>
 								<div class="radio-content">
 									<h3>$5,000 - $10,000</h3>
 								</div>
-								<label for="budget_2"></label>
+								<%= f.label :budget_range_budget_2, 'budget_2' do %>
+								<% end %>
 							</div>
+
 							<div class="radio-block">
-								<input type="radio" name="budget" value="budget_3" id="budget_3">
+								<%= f.radio_button :budget_range, 'budget_3'%>
 								<div class="radio-content">
 									<h3>$10,000 - $20,000</h3>
 								</div>
-								<label for="budget_3"></label>
+								<%= f.label :budget_range_budget_3, 'budget_3' do %>
+								<% end %>
 							</div>
+
 							<div class="radio-block">
-								<input type="radio" name="budget" value="budget_4" id="budget_4">
+								<%= f.radio_button :budget_range, 'budget_4'%>
 								<div class="radio-content">
 									<h3>$20,000+</h3>
 								</div>
-								<label for="budget_4"></label>
+								<%= f.label :budget_range_budget_4, 'budget_4' do %>
+								<% end %>
 							</div>
 						</div>
 					</section>
@@ -161,21 +186,22 @@
 					<section class="project-descrition">
 						<div class="container">	
 							<h3>Tell us a bit about your project. Who is it for? What will it do?</h3>
-							<textarea name="project_desc" id="project_desc" cols="30" rows="10"></textarea>
+							<%= f.label :description %>
+							<%= f.text_area :description, rows: "10", class: "form-control" %>
 						</div>
 					</section>
 
 					<section class="contact_info">
 						<div class="container">
-							<label for="name">Your name</label>
-							<input type="text" id="name" name="name">
-							<label for="email">Email</label>
-							<input type="email" id="email" name="email">
+							<%= f.label :your_name %>
+							<%= f.text_field :project_contact, class: "form-control" %>
+							<%= f.label :your_email %>
+							<%= f.email_field :project_email, class: "form-control" %>
 						</div>
 					</section>
 
 					<input type="submit" value="get in touch">
-				</form>
+				<% end %>
 				<div class="overview">
 					<p>Looking to create a __________</p>
 				</div>
@@ -187,39 +213,39 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
 	<script>
-		const app = {};
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "AIzaSyDo2Dno81DhP8wY56xXewSt2d07ryNMZfk",
-	    authDomain: "new-client-f2ff2.firebaseapp.com",
-	    databaseURL: "https://new-client-f2ff2.firebaseio.com",
-	    storageBucket: "new-client-f2ff2.appspot.com",
-	    messagingSenderId: "307889487273"
-	  };
-	  firebase.initializeApp(config);
+		// const app = {};
+	 //  // Initialize Firebase
+	 //  var config = {
+	 //    apiKey: "AIzaSyDo2Dno81DhP8wY56xXewSt2d07ryNMZfk",
+	 //    authDomain: "new-client-f2ff2.firebaseapp.com",
+	 //    databaseURL: "https://new-client-f2ff2.firebaseio.com",
+	 //    storageBucket: "new-client-f2ff2.appspot.com",
+	 //    messagingSenderId: "307889487273"
+	 //  };
+	 //  firebase.initializeApp(config);
 
-	  //ref to databse
-	  const database = firebase.database();
+	 //  //ref to databse
+	 //  const database = firebase.database();
 
-	  app.addClient = (client) => {
-	  	let clientId = Math.round(Math.random()* 10000) 
-	  	firebase.database().ref(`clients/${clientId}`).set({
-	  		client
-	  	})
-	  }
+	 //  app.addClient = (client) => {
+	 //  	let clientId = Math.round(Math.random()* 10000) 
+	 //  	firebase.database().ref(`clients/${clientId}`).set({
+	 //  		client
+	 //  	})
+	 //  }
 
-	  $(() => {
-	  	$('#add_client').on('submit', (e) => {
-	  		e.preventDefault()
-	  		console.log('clicked')
-	  		$.ajax({
-					type: 'POST',
-					url: $('#add_client').data('update_url'),
-					dataType: 'json',
-					data: $(this).serialize()	
-					})
+	 //  $(() => {
+	 //  	$('#add_client').on('submit', (e) => {
+	 //  		e.preventDefault()
+	 //  		console.log('clicked')
+	 //  		$.ajax({
+		// 			type: 'POST',
+		// 			url: $('#add_client').data('update_url'),
+		// 			dataType: 'json',
+		// 			data: $(this).serialize()	
+		// 			})
 	  		
-	  	})
-	  })
+	 //  	})
+	 //  })
 
 	</script>

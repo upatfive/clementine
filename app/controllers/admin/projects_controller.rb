@@ -26,6 +26,7 @@ class Admin::ProjectsController < AdminController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
+    raise "hell"
 
     respond_to do |format|
       if @project.save

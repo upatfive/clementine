@@ -24,6 +24,7 @@ class Admin::ClientsController < AdminController
 
   def create_from_form
     puts params
+    raise "hell"
     # byebug
   end
 
