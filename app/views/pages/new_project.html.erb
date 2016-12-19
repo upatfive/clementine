@@ -204,6 +204,7 @@
 					</section>
 
 					<%= f.hidden_field :status, value: 'potential_new'%>
+					<%= f.hidden_field :client_id, value: "#{Client.find_by_name('Form').id}" %>
 
 					<input type="submit" value="get in touch">
 				<% end %>

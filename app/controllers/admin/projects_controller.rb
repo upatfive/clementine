@@ -26,13 +26,16 @@ class Admin::ProjectsController < AdminController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-    @project.client = Client.find_by_name('Form')
-    if params[:platform]
-      raise "hell"
-    end
 
     respond_to do |format|
       if @project.save
+        # if a platform is set create all the project phases
+        if params[:project][:platform]
+          project_type = "Project::PROJECT_PHASES_#{@project.platform.upcase}"
+          project_type.constantize.each do |phase|
+            @project.project_phases.create(title: phase[0], description: phase[1])
+          end
+        end
         format.html { redirect_to admin_project_path(@project), notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
