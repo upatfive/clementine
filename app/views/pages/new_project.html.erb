@@ -11,7 +11,6 @@
 			<h2>The goal of this form is to get a better idea of what you are looking to build.</h2> -->
 			<div class="flex-container">
 				<%= form_for [:admin, @project] do |f| %>
-				<p><%= f.object %></p>
 					<% if @project.errors.any? %>
 						<div id="error_explanation">
 							<h2><%= pluralize(@project.errors.count, 'error') %> prohibited this form from being saved: </h2>
@@ -31,60 +30,64 @@
 						</div>
 						<div class="flex-container container">
 							<div class="radio-block">
-								<%= radio_button("post", "category", "rails") %>
-								<input type="radio" name="service_type" value="existing" id="existing" >
+								<%= f.radio_button :app_type, 'existing_site'%>
 								<div class="radio-content">
 									<i class="fa fa-window-maximize" aria-hidden="true"></i>
 									<h3>Work on an Existing Site or Application</h3>
 									<p>You have a website or application already and are looking to add features, functionality, or maybe build out a new section.</p>
 								</div>
-								<label for="existing"></label>
+								<%= f.label :app_type_existing_site, 'existing_site' do %>
+								<% end %>
 							</div>
 							<div class="radio-block">
-								<input type="radio" name="service_type" value="static_site" id="static_site" >
+								<%= f.radio_button :app_type, 'static_website'%>
 								<div class="radio-content">			
 									<i class="fa fa-desktop" aria-hidden="true"></i>
 									<h3>Static Website</h3>
 									<p>You have an idea of what information you want your site to display and think this will stay consitent for the foreseable future. Some great use cases for static websites could include a restaurant with a consistent menu, a microsite for an event, a site for a brick and mortar shop. This is a great place to start if you are looking to establish an online presence.</p>
 								</div>
-								<label for="static_site"></label>
+								<%= f.label :app_type_static_website, 'static_website' do %>
+								<% end %>
 							</div>
 							<div class="radio-block">
-								<input type="radio" name="service_type" value="dynamic_site" id="dynamic_site" >
+								<%= f.radio_button :app_type, 'dynamic_website'%>
 								<div class="radio-content">	
 									<i class="fa fa-file-code-o" aria-hidden="true"></i>
 									<h3>Dynamic Website</h3>
 									<p>Your site has some consistently updated components. Maybe you have a blog or event listings. Maybe you are updating the images and copy and want you or someone on your team to input, change, and rework content. If this resonates than a dynamic site, powered by a content management system, could be right for you.</p>
 								</div>
-								<label for="dynamic_site"></label>
+								<%= f.label :app_type_dynamic_website, 'dynamic_website' do %>
+								<% end %>
 							</div>
 							<div class="radio-block">
-								
-								<input type="radio" name="service_type" value="ecomm_site" id="ecomm_site" >
+								<%= f.radio_button :app_type, 'ecommerce'%>
 								<div class="radio-content">	
 									<i class="fa fa-tag" aria-hidden="true"></i>
 									<h3>Ecommerce Website</h3>
 									<p>The primary goal of your site is to act as an ecommerce gateway. You want to be able to manage new products and inventory from a content management system. You may still want other features, like a blog or articles section or a customizable lookbook and you can have those too. </p>
 								</div>
-								<label for="ecomm_site"></label>
+								<%= f.label :app_type_ecommerce, 'ecommerce' do %>
+								<% end %>
 							</div>
 							<div class="radio-block">
-								<input type="radio" name="service_type" value="market" id="market" >
+								<%= f.radio_button :app_type, 'market_place'%>
 								<div class="radio-content">
 									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 									<h3>Market Place</h3>
 									<p>Marketplace applications facilitate peer to peer commerce. This is a custom solution that is heavily transactionally driven. Some exmaples include Etsy and Airbnb</p>
 								</div>
-								<label for="market"></label>
+								<%= f.label :app_type_market_place, 'market_place' do %>
+								<% end %>
 							</div>
 							<div class="radio-block">
-								<input type="radio" name="service_type" value="web_app" id="web_app" >
+								<%= f.radio_button :app_type, 'web_application'%>
 								<div class="radio-content">
 									<i class="fa fa-id-card-o" aria-hidden="true"></i>
 									<h3>Custom Web Application</h3>
 									<p>Your application involves custom user interactions. Maybe you have a new applicaiton idea or are looking to transform a low tech solution into something more automated. A custom web applicaitons allows you to decide the features and functionalities you want for your project. Some great examples of web applications are WealthSimple, Twitter, Meetup.</p>
 								</div>
-								<label for="web_app"></label>
+								<<%= f.label :app_type_web_application, 'web_application' do %>
+								<% end %>
 							</div>
 						</div>
 					</section>
@@ -95,33 +98,33 @@
 						</div>
 						<div class="container flex-container">
 							<div class="radio-block">
-								<%= f.radio_button :design_needed, 'existing_brand_design'%>
+								<%= f.radio_button :design_status, 'existing_brand_design'%>
 								<div class="radio-content">
 									<i class="fa fa-laptop" aria-hidden="true"></i>
 									<h3>You have existing branding and design</h3>
 									<p>A flat design has been done for your project already or you are working with an existing project that is already designed. All graphic design elements are accounted for.</p>
 								</div>
-								<%= f.label :design_needed_existing_brand_design, 'existing_brand_design' do %>
+								<%= f.label :design_status_existing_brand_design, 'existing_brand_design' do %>
 								<% end %>
 							</div>
 							<div class="radio-block">
-								<%= f.radio_button :design_needed, 'existing_brand_no_design'%>
+								<%= f.radio_button :design_status, 'existing_brand_no_design'%>
 								<div class="radio-content">
 									<i class="fa fa-compass" aria-hidden="true"></i>
 									<h3>You have existing branding but need design</h3>
 									<p>You have a logo, brand colors, and maybe some fonts associated with your company or project. You are looking to get the design for the website or application done, leveraging existing branding.</p>
 								</div>				
-								<%= f.label :design_needed_existing_brand_no_design, 'existing_brand_no_design' do %>
+								<%= f.label :design_status_existing_brand_no_design, 'existing_brand_no_design' do %>
 								<% end %>
 							</div>
 							<div class="radio-block">
-								<%= f.radio_button :design_needed, 'brand_and_design'%>
+								<%= f.radio_button :design_status, 'brand_and_design'%>
 								<div class="radio-content">
 									<i class="fa fa-paint-brush" aria-hidden="true"></i>
 									<h3>You need branding and design</h3>
 									<p>You are starting fresh or just starting and need a logo, colors, font-treatments and the overall look of your site or application to be developed.</p>
 								</div>
-								<%= f.label :design_needed_brand_and_design, 'brand_and_design' do %>
+								<%= f.label :design_status_brand_and_design, 'brand_and_design' do %>
 								<% end %>
 							</div>
 						</div>
@@ -199,6 +202,8 @@
 							<%= f.email_field :project_email, class: "form-control" %>
 						</div>
 					</section>
+
+					<%= f.hidden_field :status, value: 'potential_new'%>
 
 					<input type="submit" value="get in touch">
 				<% end %>

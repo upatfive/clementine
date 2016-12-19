@@ -6,7 +6,13 @@ class Project < ApplicationRecord
 
 	STATUS = ['potential_new', 'signed' ,'in_progress', 'complete']
 	APP_TYPE = ['existing_site', 'static_website', 'dynamic_website', 'ecommerce', 'market_place', 'web_application']
-	BUDGET_RANGE = ['$2,000_$5,000', '$5,000_$10,000', '$10,000_$20,000', '$20,000+']
+	DESIGN_STATUS = ['existing_brand_design', 'existing_brand_no_design', 'brand_and_design']
+BUDGET_RANGE = {
+	budget_1: '$2,000_$5,000',
+	budget_2: '$5,000_$10,000', 
+	budget_3: '$10,000_$20,000', 
+	budget_4: '$20,000+'
+}
 	PLATFORM = ['rails', 'shopify', 'wordpress']
 
 	PROJECT_PHASES_WORDPRESS = [

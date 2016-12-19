@@ -19,6 +19,12 @@
     
   </div>
   <div class="row">
+    <div class="field col-md-3 form-group">
+      <%= f.label :status %>
+      <%= f.collection_select :status, Project::STATUS, :to_s, :humanize, {include_blank: 'current status...'}, {class: 'form-control'} %>
+    </div> 
+  </div>
+  <div class="row">
     <div class="field col-md-4 form-group">
       <%= f.label :client %>
       <%= f.collection_select :client_id, Client.order(:name), :id, :name, {include_blank: 'select a client...'}, {class: 'form-control'} %>
@@ -39,17 +45,17 @@
       <%= f.collection_select :app_type, Project::APP_TYPE, :to_s, :humanize, {:include_blank => 'select an app type...'}, {:class => 'form-control'} %>
     </div>
     <div class="field col-md-3 form-group">
-      <%= f.label :status %>
-      <%= f.collection_select :status, Project::STATUS, :to_s, :humanize, {include_blank: 'current status...'}, {class: 'form-control'} %>
-    </div> 
-    <div class="field col-md-3 form-group">
       <%= f.label :budget_range %>
-      <%= f.collection_select :budget_range, Project::BUDGET_RANGE, :to_s, :humanize, {include_blank: 'budget range...'}, {class: 'form-control'} %>
+      <%= f.collection_select :budget_range, Project::BUDGET_RANGE, :first, :second, {include_blank: 'budget range...'}, {class: 'form-control'} %>
     </div>
     <div class="field col-md-3 form-group">
       <%= f.label :platform %>
       <%= f.collection_select :platform, Project::PLATFORM, :to_s, :humanize, {include_blank: "pick a platform..."}, {class: 'form-control'}%>
-    </div>  
+    </div> 
+    <div class="field col-md-3 form-group">
+      <%= f.label :design_status %>
+      <%= f.collection_select :design_status, Project::DESIGN_STATUS, :to_s, :humanize, {include_blank: "design needed..."}, {class: 'form-control'}%>
+    </div> 
   </div>
 
   <div class="row">
@@ -65,19 +71,10 @@
   </div>
 
   <div class="row">
-    <div class="field col-md-4 form-group">
-      <%= f.label :app_type %>
-      <%= f.collection_select :app_type, Project::APP_TYPE, :to_s, :humanize, {:include_blank => 'select an app type...'}, {:class => 'form-control'} %>
-    </div>
-    <div class="field col-md-8 form-group">
+    <div class="field col-md-8 col-md-offset-4 form-group">
       <%= f.label :inspiration %>
       <%= f.text_area :inspiration, rows: "6", class: "form-control" %>
     </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :design_needed %>
-    <%= f.check_box :design_needed %>
   </div>
 
   <div class="row">
@@ -99,9 +96,18 @@
     <%= f.text_area :about_the_project, class: "form-control" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :paid %>
-    <%= f.check_box :paid %>
+    <h4>Flags</h4>
+  <div class="row">
+    <div class="field form-group col-md-3">
+      <%= f.label :design_needed %>
+      <%= f.check_box :design_needed %>
+    </div>
+    <div class="field form-group col-md-3">
+      <%= f.label :paid %>
+      <%= f.check_box :paid %>
+    </div>
+
+    
   </div>
 
   <hr>
