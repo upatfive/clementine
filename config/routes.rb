@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 	get 'new_project', to: 'pages#new_project'
 	namespace :admin do 
   	resources :companies
+    get 'project/pdf_proposal/:id' => 'projects#proposal_download'
   	resources :clients do
       post :create_from_form, on: :collection
     end

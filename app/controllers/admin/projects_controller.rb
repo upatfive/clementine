@@ -1,6 +1,15 @@
 class Admin::ProjectsController < AdminController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :proposal_download]
 
+  def proposal_download
+    @project_phases = @project.project_phases.rank(:phase_order)
+    html = render_to_string('admin/projects/pdf_proposal.html.erb', layout: 'pdfs/layout_pdf')
+    pdf = WickedPdf.new.pdf_from_string(html)
+    send_data(pdf,
+      filename: "proposal.pdf",
+      type: 'application/pdf',
+      disposition: 'attachement')
+  end
   # GET /projects
   # GET /projects.json
   def index

@@ -10,6 +10,10 @@ gem 'devise'
 # optimization
 gem 'bullet'
 
+# pdf generation
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 # adding tags
 gem 'acts-as-taggable-on', '~> 4.0'
 
