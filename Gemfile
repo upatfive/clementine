@@ -14,6 +14,10 @@ gem 'bullet'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+# for image management
+gem 'paperclip'
+gem 'aws-sdk'
+
 # adding tags
 gem 'acts-as-taggable-on', '~> 4.0'
 

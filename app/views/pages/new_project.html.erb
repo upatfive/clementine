@@ -1,14 +1,13 @@
 <div class="public_pages">
-	
-	<div class="new_project">
+	<div class="new_project_wrapper">
+		<p id="notice"><%= notice %></p>
 		<header>
 			<div class="container">
 				<h2>Starting a new Project</h2>
 				<p class="attn">A better idea of what you are looking to build.</p>
 			</div>
 			</header>
-			<!-- <h1>Hi!</h1>
-			<h2>The goal of this form is to get a better idea of what you are looking to build.</h2> -->
+
 			<div class="flex-container">
 				<%= form_for [:admin, @project] do |f| %>
 					<% if @project.errors.any? %>
@@ -22,7 +21,6 @@
 						</div>
 					<% end %>
 						
-				<!-- <form action="" action="<%= create_from_form_admin_clients_path %>" id="add_client" data-update_url="<%= create_from_form_admin_clients_path %>">	 -->
 					<section>
 						<div class="container">
 							<h2>What are you looking to create?</h2>
@@ -86,7 +84,7 @@
 									<h3>Custom Web Application</h3>
 									<p>Your application involves custom user interactions. Maybe you have a new applicaiton idea or are looking to transform a low tech solution into something more automated. A custom web applicaitons allows you to decide the features and functionalities you want for your project. Some great examples of web applications are WealthSimple, Twitter, Meetup.</p>
 								</div>
-								<<%= f.label :app_type_web_application, 'web_application' do %>
+								<%= f.label :app_type_web_application, 'web_application' do %>
 								<% end %>
 							</div>
 						</div>
@@ -137,8 +135,10 @@
 							<%= f.text_area :inspiration, rows: "6", class: "form-control" %>
 						</div>
 					</section>
-
-					<section class="details">
+					<section class="date">
+						<div class="container">
+							<h3>Timeline</h3>
+						</div>
 						<div class="container flex-container">
 							<%= f.label "When are you looking to start?" %>
 							<%= f.date_field :start_date %>
@@ -146,6 +146,9 @@
 							<%= f.label "What is your ideal completion date?" %>
 							<%= f.date_field :end_date %>
 						</div>
+						
+					</section>
+					<section class="details">
 						<div class="container"><h3>What is your budget?</h3></div>
 						<div class="container flex-container budget">
 							<div class="radio-block">
@@ -196,6 +199,7 @@
 
 					<section class="contact_info">
 						<div class="container">
+							<h3>Contact Info</h3>
 							<%= f.label :your_name %>
 							<%= f.text_field :project_contact, class: "form-control" %>
 							<%= f.label :your_email %>
@@ -205,11 +209,13 @@
 
 					<%= f.hidden_field :status, value: 'potential_new'%>
 					<%= f.hidden_field :client_id, value: "#{Client.find_by_name('Form').id}" %>
-
-					<input type="submit" value="get in touch">
+					<%= f.hidden_field :origin, value: 'form' %>
+					<div class="container">
+						<input type="submit" value="get in touch">
+					</div>
 				<% end %>
-				<div class="overview">
-					<p>Looking to create a __________</p>
+				<div class="modal hidden" id="submit_thanks">
+					<p>Thank you! We will be in touch shortly</p>
 				</div>
 		<div>	
 	</div>

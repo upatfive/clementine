@@ -45,8 +45,13 @@ class Admin::ProjectsController < AdminController
             @project.project_phases.create(title: phase[0], description: phase[1])
           end
         end
-        format.html { redirect_to admin_project_path(@project), notice: 'Project was successfully created.' }
-        format.json { render :show, status: :created, location: @project }
+        if params[:project][:origin] == 'form'
+          format.html { redirect_to new_project_path, notice: "Thank you! We will be in touch shortly"}
+        else
+          raise 'hell'
+          format.html { redirect_to admin_project_path(@project), notice: 'Project was successfully created.' }
+          format.json { render :show, status: :created, location: @project }
+        end
       else
         format.html { render :new }
         format.json { render json: @project.errors, status: :unprocessable_entity }

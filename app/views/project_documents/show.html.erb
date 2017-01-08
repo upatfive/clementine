@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @project_document.project %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @project_document.title %>
+</p>
+
+<p>
+	<%= link_to 'the doc' , asset_url(@project_document.doc.url), target: '_blank'  %>
+</p>
+
+<%= link_to 'Edit', edit_project_document_path(@project_document) %> |
+<%= link_to 'Back', project_documents_path %>

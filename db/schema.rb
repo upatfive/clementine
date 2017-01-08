@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219192748) do
+ActiveRecord::Schema.define(version: 20170108215807) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20161219192748) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "company_id"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "province"
+    t.string   "postal_code"
+    t.string   "country"
     t.index ["company_id"], name: "index_clients_on_company_id"
   end
 
@@ -27,6 +33,18 @@ ActiveRecord::Schema.define(version: 20161219192748) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "project_documents", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "title"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "doc_file_name"
+    t.string   "doc_content_type"
+    t.integer  "doc_file_size"
+    t.datetime "doc_updated_at"
+    t.index ["project_id"], name: "index_project_documents_on_project_id"
   end
 
   create_table "project_phases", force: :cascade do |t|

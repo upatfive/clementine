@@ -11,24 +11,63 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
+  <div class="row">
+    <div class="field form-group col-md-6">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :main_contact %>
-    <%= f.text_field :main_contact, class: 'form-control' %>
+  <div class="row">
+    <div class="field form-group col-md-6">
+      <%= f.label :main_contact %>
+      <%= f.text_field :main_contact, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-md-6">
+      <%= f.label :main_email %>
+      <%= f.text_field :main_email, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :main_email %>
-    <%= f.text_field :main_email, class: 'form-control' %>
+  <div class="row">
+    <div class="field form-group col-md-6">
+      <%= f.label :industry %>
+      <%= f.text_field :industry, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :industry %>
-    <%= f.text_field :industry, class: 'form-control' %>
+  <h3>Address</h3>
+  <div class="row">
+    <div class="field form-group col-md-12">
+      <%= f.label :address1 %>
+      <%= f.text_field :address1, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-md-12">
+      <%= f.label :address2 %>
+      <%= f.text_field :address2, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-md-6">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-md-6">
+      <%= f.label :province %>
+      <%= f.text_field :province, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-md-6">
+      <%= f.label :postal_code %>
+      <%= f.text_field :postal_code, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-md-6">
+      <%= f.label :country %>
+      <%= f.text_field :country, class: 'form-control' %>
+    </div>
   </div>
 
   <div class="actions">
