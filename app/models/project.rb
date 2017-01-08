@@ -1,8 +1,10 @@
 class Project < ApplicationRecord
 	belongs_to :client
 	has_many :project_phases
+	has_many :project_documents
 
 	accepts_nested_attributes_for :project_phases, allow_destroy: :true
+	accepts_nested_attributes_for :project_documents, allow_destroy: :true
 
 	STATUS = ['potential_new', 'signed' ,'in_progress', 'complete']
 	APP_TYPE = ['existing_site', 'static_website', 'dynamic_website', 'ecommerce', 'market_place', 'web_application']

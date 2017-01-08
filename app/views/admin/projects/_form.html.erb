@@ -123,7 +123,19 @@
   </div>
 
   <hr>
-  
+
+  <h2 class="text-center">Documents</h2>
+  <hr>
+  <div class="documents">
+    <%= f.fields_for :project_documents do |builder2| %>
+      <%= render 'project_document_fields', f: builder2 %>
+    <% end %>
+  </div>
+  <div class="field form-group">
+    <%= link_to_add_fields "Add Doc", f, :project_documents %>
+  </div>
+
+
 
   <div class="actions">
     <%= f.submit 'Save Project', class: 'btn btn-flat btn-primary pull-right'%>

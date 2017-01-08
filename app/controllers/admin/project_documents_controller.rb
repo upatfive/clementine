@@ -1,4 +1,4 @@
-class ProjectDocumentsController < ApplicationController
+class Admin::ProjectDocumentsController < AdminController
   before_action :set_project_document, only: [:show, :edit, :update, :destroy]
 
   # GET /project_documents

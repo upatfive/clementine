@@ -7,4 +7,3 @@ Aws.config.update(
 S3 = Aws::S3::Client.new
 resp = S3.list_buckets
 puts resp.buckets.map(&:name)
-# .bucket[ 'clemetine-upatfive' ]

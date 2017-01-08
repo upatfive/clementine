@@ -1,0 +1,23 @@
+<fieldset class="project">
+
+	<div class="row">
+		<div class="field col-md-3">
+		  <%= f.label :title %>
+		  <%= f.text_field :title, class: 'form-control' %>
+		</div>
+
+		<div class="field col-md-4">
+		  <%= f.file_field :doc, class: 'form-control' %>
+		</div>
+
+		<div class="field col-md-4">
+			<%= link_to 'download', f.object.doc.url, target: '_blank' %>
+		</div>
+
+		<div class="field col-md-1 form-group">
+			<%= f.label :_destroy, 'delete phase', class: "danger"%>
+			<%= f.check_box :_destroy %>
+		</div>
+	</div>
+	<hr>
+</fieldset>
