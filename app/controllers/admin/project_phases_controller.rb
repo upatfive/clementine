@@ -1,6 +1,6 @@
 class Admin::ProjectPhasesController < AdminController
   before_action :set_project_phase, only: [:show, :edit, :update, :destroy, :sort]
-
+  
   def sort  
     # @project_phase = ProjectPhase.find(params[:id])
     @project_phase.attributes = params.require(:project_phase).permit(:phase_order_position)

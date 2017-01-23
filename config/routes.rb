@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   get 'new_project', to: 'pages#new_project'
+  
   namespace :admin do 
     resources :companies
     get 'project/pdf_proposal/:id' => 'projects#proposal_download'
@@ -14,5 +16,7 @@ Rails.application.routes.draw do
     end
     resources :project_documents
 	end
+
+  root to: 'admin/projects#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

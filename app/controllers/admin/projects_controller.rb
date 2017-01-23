@@ -1,6 +1,6 @@
 class Admin::ProjectsController < AdminController
   before_action :set_project, only: [:show, :edit, :update, :destroy, :proposal_download]
-
+  skip_before_action :authenticate_user!, only: [:create]
   def proposal_download
     @company = Company.first
     @project_phases = @project.project_phases.rank(:phase_order)
