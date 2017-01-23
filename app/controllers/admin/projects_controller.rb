@@ -2,6 +2,7 @@ class Admin::ProjectsController < AdminController
   before_action :set_project, only: [:show, :edit, :update, :destroy, :proposal_download]
 
   def proposal_download
+    @company = Company.first
     @project_phases = @project.project_phases.rank(:phase_order)
     html = render_to_string('admin/projects/pdf_proposal.html.erb', layout: 'pdfs/layout_pdf')
     pdf = WickedPdf.new.pdf_from_string(html)
@@ -19,6 +20,7 @@ class Admin::ProjectsController < AdminController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @company = Company.first
     @project_phases = @project.project_phases.rank(:phase_order)
   end
 

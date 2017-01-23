@@ -1,5 +1,6 @@
 <div class="box">
   <div class="box-header">
+    <%= image_tag @company.logo.url(:thumb) %>
     <h1><%= @project.name %></h1>
     <h2><%= @project.client.name if @project.client.present? %></h2>
   </div>
@@ -12,7 +13,7 @@
       <h3>The Process</h3>
       <% @project_phases.each do |phase| %>
         <h4><%= phase.title %></h4>
-        <p><%= phase.description %></p>
+        <p><%= phase.description.html_safe %></p>
       <% end %>
     </div>
   </div>

@@ -1,7 +1,10 @@
 <div class="box">
-  <div class="box-header">
-    <h1><%= @project.name %></h1>
-    <h2><%= @project.client.name if @project.client.present? %></h2>
+  <div class="box-header"> 
+    <img src="http://deartrudence.com/up-at-five-logo.png" class="logo" alt="">
+    <div class="header">
+      <h1><%= @project.name %></h1>
+      <h2><%= @project.client.name if @project.client.present? %></h2>
+    </div>
   </div>
   <div class="box-body">
     <div>
@@ -12,8 +15,28 @@
       <h3>The Process</h3>
       <% @project_phases.each do |phase| %>
         <h4><%= phase.title %></h4>
-        <p><%= phase.description %></p>
+        <p><%= phase.description.html_safe %></p>
       <% end %>
     </div>
   </div>
 </div>
+
+
+<style> 
+* {
+  font-family: 'Muli',sans-serif;
+  line-height: 1.5;
+}
+
+.header {
+  text-align: center;
+}
+.logo {
+  width: 100px;
+}
+.box-body {
+  max-width: 840px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+</style>

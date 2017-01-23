@@ -15,6 +15,10 @@
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
+  <div class="field form-group">
+    <%= f.label :logo %>
+    <%= f.file_field :logo %>
+  </div>
 
   <div class="actions form-group">
     <%= f.submit "submit", class: "btn btn-flat btn-primary" %>
