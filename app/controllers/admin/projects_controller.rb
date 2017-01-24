@@ -50,7 +50,6 @@ class Admin::ProjectsController < AdminController
         if params[:project][:origin] == 'form'
           format.html { redirect_to new_project_path, notice: "Thank you! We will be in touch shortly"}
         else
-          raise 'hell'
           format.html { redirect_to admin_project_path(@project), notice: 'Project was successfully created.' }
           format.json { render :show, status: :created, location: @project }
         end
